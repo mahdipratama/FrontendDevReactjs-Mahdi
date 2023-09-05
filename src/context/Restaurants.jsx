@@ -15,33 +15,7 @@ const AppProvider = ({ children }) => {
       try {
         const restaurants = await getRestaurants();
 
-        const dataRestaurants = restaurants.map(restaurant => {
-          const {
-            averageRating: rating,
-            currentOpenStatusCategory: currentStatus,
-            currentOpenStatusText: currentStatusText,
-            establishmentTypeAndCuisineTags: cuisine,
-            heroImgUrl,
-            name,
-            parentGeoName: location,
-            priceTag,
-            restaurantsId,
-          } = restaurant;
-
-          return {
-            rating,
-            currentStatus,
-            currentStatusText,
-            cuisine,
-            heroImgUrl,
-            name,
-            location,
-            priceTag,
-            restaurantsId,
-          };
-        });
-
-        setRestaurants(dataRestaurants);
+        setRestaurants(restaurants);
 
         isLoading(false);
       } catch (error) {

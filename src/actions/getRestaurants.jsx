@@ -1,5 +1,5 @@
 const url =
-  'https://tripadvisor16.p.rapidapi.com/api/v1/restaurant/searchRestaurants?locationId=304554';
+  'https://tripadvisor16.p.rapidapi.com/api/v1/restaurant/searchRestaurants?locationId=60763';
 const options = {
   method: 'GET',
   headers: {
@@ -20,7 +20,35 @@ const getRestaurants = async () => {
 
     const { data: restaurants } = data;
 
-    return restaurants;
+    const dataRestaurants = restaurants.map(restaurant => {
+      const {
+        averageRating: rating,
+        currentOpenStatusCategory: currentStatus,
+        currentOpenStatusText: currentStatusText,
+        establishmentTypeAndCuisineTags: cuisines,
+        heroImgUrl,
+        name,
+        parentGeoName: location,
+        priceTag,
+        restaurantsId,
+      } = restaurant;
+
+      const cuisine = cuisines[0];
+
+      return {
+        rating,
+        currentStatus,
+        currentStatusText,
+        cuisine,
+        heroImgUrl,
+        name,
+        location,
+        priceTag,
+        restaurantsId,
+      };
+    });
+
+    return dataRestaurants;
   } catch (error) {
     console.error(error);
   }

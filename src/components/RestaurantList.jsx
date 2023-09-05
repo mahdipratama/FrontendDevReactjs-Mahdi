@@ -6,14 +6,18 @@ function RestaurantList() {
   const { restaurants, loading } = useGlobalContext();
 
   return (
-    <div>
-      {restaurants.map(restaurant => (
-        <RestaurantCard
-          key={restaurant.restaurantsId}
-          restaurant={restaurant}
-        />
-      ))}
-    </div>
+    <section>
+      <h2 className="text-xl font-bold mt-9 mb-5">All Restaurant</h2>
+
+      <article className="flex flex-wrap gap-5 justify-center">
+        {restaurants.map(restaurant => (
+          <RestaurantCard
+            key={restaurant.restaurantsId}
+            restaurant={restaurant}
+          />
+        ))}
+      </article>
+    </section>
   );
 }
 

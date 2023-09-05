@@ -9,6 +9,7 @@ function Home() {
         recusandae necessitatibus ea voluptatibus et sed tempore atque sequi
         deleniti unde.
       </p>
+
       {/* Filters  */}
 
       <RestaurantList />
