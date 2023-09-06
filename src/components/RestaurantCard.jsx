@@ -33,7 +33,7 @@ function RestaurantCard({ restaurant }) {
   const ratingImageSrc = getRatingImage(rating);
 
   return (
-    <div>
+    <div className="shadow-small rounded-sm overflow-hidden">
       <div className="w-[275px] h-[250px]">
         <img
           className="w-full h-full object-cover"
@@ -41,32 +41,35 @@ function RestaurantCard({ restaurant }) {
           alt="restaurant picture"
         />
       </div>
-      <h3 className="text-md font-semibold ">{name}</h3>
-      <div className="w-[70px] h-[30px]">
-        <img src={ratingImageSrc} className="w-full h-full" alt="ratings" />
-      </div>
-      <div className="flex gap-2 items-center">
-        <span>{cuisine}</span> - <span>{priceTag ? `${priceTag}` : '$'}</span>
-        <p className="ml-auto">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="30"
-            height="30"
-            viewBox="0 0 48 48"
-            fill={currentStatus.includes('CLOSED') ? 'red' : 'green'}
-            className="inline-block -mt-1 -mr-2"
-            id="bullet">
-            <path d="M24 30c-3.312 0-6-2.688-6-6s2.688-6 6-6 6 2.688 6 6-2.688 6-6 6z"></path>
-          </svg>
-          {currentStatusText}
-        </p>
-      </div>
+      <div className="px-3 py-3">
+        <h3 className="text-[15px] font-semibold text-clip	">{name}</h3>
+        <div className="w-[70px] h-[30px]">
+          <img src={ratingImageSrc} className="w-full h-full" alt="ratings" />
+        </div>
+        <div className="flex gap-2 items-center ">
+          <span className="text-sm">{cuisine}</span> |{' '}
+          <span className="text-sm">{priceTag ? `${priceTag}` : '$'}</span>
+          <p className="ml-auto text-sm">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="30"
+              height="30"
+              viewBox="0 0 48 48"
+              fill={currentStatus.includes('CLOSED') ? 'red' : 'green'}
+              className="inline-block -mt-1 -mr-2"
+              id="bullet">
+              <path d="M24 30c-3.312 0-6-2.688-6-6s2.688-6 6-6 6 2.688 6 6-2.688 6-6 6z"></path>
+            </svg>
+            {currentStatus}
+          </p>
+        </div>
 
-      <Link to={`/restaurant/${restaurantsId}`}>
-        <button className="mx-auto block bg-zinc-500 text-white px-6 py-2 mt-5">
-          More detail
-        </button>
-      </Link>
+        <Link to={`/restaurant/${restaurantsId}`}>
+          <button className="mx-auto block bg-zinc-500 text-white px-6 py-2 mt-5 mb-3">
+            More detail
+          </button>
+        </Link>
+      </div>
     </div>
   );
 }

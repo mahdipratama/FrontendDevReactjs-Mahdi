@@ -61,7 +61,7 @@ function RestaurantList() {
       {isLoading ? (
         <Loading />
       ) : (
-        <article className="flex flex-wrap gap-5 justify-center">
+        <article className="flex flex-wrap gap-5 lg:gap-7 justify-center xl:justify-around">
           {filteredRestaurants.length === 0 ? (
             <p>No restaurants match the selected filters.</p>
           ) : (
