@@ -60,8 +60,8 @@ function RestaurantDetail() {
       {isLoading ? (
         <Loading />
       ) : (
-        <article className="container mt-10">
-          <div className="flex items-center gap-3">
+        <article className="py-7 px-6 sm:py-10 lg:px-12">
+          <div className="flex items-center gap-3 justify-center lg:justify-start ">
             <h2 className="text-lg">{name} </h2>
             <span className="w-[70px] h-[30px] inline-block">
               <img
@@ -73,43 +73,60 @@ function RestaurantDetail() {
           </div>
 
           <div>
-            <div>
-              <div className="w-[500px] h-[520px]">
+            <div className="max-w-[560px] lg:max-w-[1280px] flex flex-col mx-auto lg:flex-row gap-5 lg:gap-10">
+              <div className=" h-[520px] flex-1">
                 <img
                   src={image}
                   alt="restaurant"
                   className="w-full h-full object-cover"
                 />
               </div>
-              <h3>{name}</h3>
-              <div className="flex items-center gap-2">
-                <span className="w-[70px] h-[30px] inline-block">
-                  <img
-                    src={ratingImageSrc}
-                    className="w-full h-full"
-                    alt="ratings"
-                  />
-                </span>
-                <p>Ranking: {ranking}</p>
-              </div>
 
-              <div>
-                <p>{description}</p>
-                <span>address: {address}</span>
+              <div className="flex-1">
+                <div className="flex">
+                  <h3 className="font-bold text-2xl">{name}</h3>
 
-                <p className="ml-auto">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="30"
-                    height="30"
-                    viewBox="0 0 48 48"
-                    fill={openStatus?.includes('CLOSED') ? 'red' : 'green'}
-                    className="inline-block -mt-1 -mr-2"
-                    id="bullet">
-                    <path d="M24 30c-3.312 0-6-2.688-6-6s2.688-6 6-6 6 2.688 6 6-2.688 6-6 6z"></path>
-                  </svg>
-                  {openStatusText}
-                </p>
+                  <p className="ml-auto text-sm text-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="30"
+                      height="30"
+                      viewBox="0 0 48 48"
+                      fill={openStatus?.includes('CLOSED') ? 'red' : 'green'}
+                      className="inline-block -mt-1 -mr-2"
+                      id="bullet">
+                      <path d="M24 30c-3.312 0-6-2.688-6-6s2.688-6 6-6 6 2.688 6 6-2.688 6-6 6z"></path>
+                    </svg>
+                    {openStatusText}
+                  </p>
+                </div>
+
+                <div className="flex flex-col items-start  gap-2 mb-8">
+                  <span className="w-[80px] h-[20px] inline-block">
+                    <img
+                      src={ratingImageSrc}
+                      className="w-full h-full"
+                      alt="ratings"
+                    />
+                  </span>
+                  <p className="">Ranking: {ranking}</p>
+                </div>
+
+                <div>
+                  <p className="mb-1 font-semibold">
+                    Address :{' '}
+                    <span className="font-normal text-base  text-zinc-700 ">
+                      {address}
+                    </span>
+                  </p>
+
+                  <p className="font-semibold ">
+                    Description :{' '}
+                    <span className=" text-base font-normal text-zinc-700">
+                      {description}
+                    </span>
+                  </p>
+                </div>
               </div>
             </div>
 

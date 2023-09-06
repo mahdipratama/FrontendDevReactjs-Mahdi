@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.container {
+.layout {
   @apply py-7 px-6 sm:py-10 lg:px-12;
 }
 
