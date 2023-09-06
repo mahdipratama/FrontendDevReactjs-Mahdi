@@ -26,7 +26,7 @@ const AppProvider = ({ children }) => {
     fetchRestaurants();
   }, []);
 
-  const cagetory = [
+  const category = [
     ...new Set(restaurants.map(restaurant => restaurant.cuisine)),
   ];
 
@@ -43,7 +43,7 @@ const AppProvider = ({ children }) => {
       value={{
         isLoading,
         restaurants,
-        cagetory,
+        category,
         price,
       }}>
       {children}

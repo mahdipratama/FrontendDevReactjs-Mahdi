@@ -60,7 +60,7 @@ function RestaurantDetail() {
       {isLoading ? (
         <Loading />
       ) : (
-        <article className="mt-10">
+        <article className="container mt-10">
           <div className="flex items-center gap-3">
             <h2 className="text-lg">{name} </h2>
             <span className="w-[70px] h-[30px] inline-block">

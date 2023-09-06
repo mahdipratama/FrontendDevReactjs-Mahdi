@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom';
 
 function Nav() {
   return (
-    <nav>
+    <nav className="container ">
       <Link to="/">
-        <h1>FoodyFood</h1>
+        <p className="inline text-xl font-bold text-teal-500">FoodyFood</p>
       </Link>
     </nav>
   );

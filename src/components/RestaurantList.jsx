@@ -8,13 +8,13 @@ import PriceFilter from './PriceFilter';
 import Loading from './Loading';
 
 function RestaurantList() {
-  const { restaurants, isLoading, cagetory, price } = useGlobalContext();
+  const { restaurants, isLoading, category, price } = useGlobalContext();
 
   const [isOpen, setIsOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedPriceRange, setSelectedPriceRange] = useState('');
 
-  // Filter restaurants based on selected criteria
+  // Filter restaurants
   const filteredRestaurants = restaurants
     .filter(restaurant => !isOpen || restaurant.currentStatus === 'OPEN')
     .filter(
@@ -27,19 +27,36 @@ function RestaurantList() {
         (restaurant.priceTag && restaurant.priceTag === selectedPriceRange)
     );
 
+  const resetFilter = () => {
+    setIsOpen(false);
+    setSelectedCategory('');
+    setSelectedPriceRange('');
+  };
+
   return (
     <section>
-      <h2 className="text-xl font-bold mt-9 mb-5">All Restaurant</h2>
+      <div className="mt-9 mb-5 border-y flex flex-col sm:flex-row gap-5 justify-center sm:items-center sm:justify-start sm:gap-10 py-2 ">
+        <p>Filters: </p>
+        <CurrentOpenFilter setIsOpen={setIsOpen} isOpen={isOpen} />
+        <CategoryFilter
+          categories={category}
+          setSelectedCategory={setSelectedCategory}
+          selectedCategory={selectedCategory}
+        />
+        <PriceFilter
+          priceRanges={price}
+          setSelectedPriceRange={setSelectedPriceRange}
+          selectedPriceRange={selectedPriceRange}
+        />
 
-      <CurrentOpenFilter onSelectOpenStatus={setIsOpen} />
-      <CategoryFilter
-        categories={cagetory}
-        onSelectCategory={setSelectedCategory}
-      />
-      <PriceFilter
-        priceRanges={price}
-        onSelectPriceRange={setSelectedPriceRange}
-      />
+        <button
+          onClick={() => resetFilter()}
+          className="border inline py-1 px-2">
+          Clear All
+        </button>
+      </div>
+
+      <h2 className="text-xl font-bold  mb-5 ">All Restaurant</h2>
 
       {isLoading ? (
         <Loading />

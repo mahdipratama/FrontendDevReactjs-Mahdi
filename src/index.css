@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.container {
+  @apply py-7 px-6 sm:py-10 lg:px-12;
+}
+
 .loader {
   width: 48px;
   height: 48px;

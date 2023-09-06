@@ -1,20 +1,22 @@
 /* eslint-disable react/prop-types */
-import { useState } from 'react';
 
-function CurrentOpenFilter({ onSelectOpenStatus }) {
-  const [isOpen, setIsOpen] = useState(false);
-
+function CurrentOpenFilter({ setIsOpen, isOpen }) {
   const handleChange = event => {
     const openStatus = event.target.checked;
+
     setIsOpen(openStatus);
-    onSelectOpenStatus(openStatus);
   };
 
   return (
-    <div>
-      <label>
-        <input type="checkbox" checked={isOpen} onChange={handleChange} /> Show
-        Open Restaurants
+    <div className="">
+      <label className="text-sm sm:text-base">
+        <input
+          type="checkbox"
+          checked={isOpen}
+          onChange={handleChange}
+          className="text-sm sm:text-base"
+        />{' '}
+        Open Now
       </label>
     </div>
   );

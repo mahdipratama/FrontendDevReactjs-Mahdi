@@ -1,22 +1,23 @@
 /* eslint-disable react/prop-types */
-import { useState } from 'react';
 
-function CategoryFilter({ categories, onSelectCategory }) {
-  const [selectedCategory, setSelectedCategory] = useState('');
-
+function CategoryFilter({ categories, selectedCategory, setSelectedCategory }) {
   const handleChange = event => {
     const category = event.target.value;
     setSelectedCategory(category);
-    onSelectCategory(category);
   };
 
   return (
     <div>
-      <label>Filter by Category:</label>
+      <label className="text-sm sm:text-base">Categories : </label>
       <select value={selectedCategory} onChange={handleChange}>
-        <option value="">All Categories</option>
+        <option value="" className="text-sm sm:text-base">
+          All Categories
+        </option>
         {categories.map(category => (
-          <option key={category} value={category}>
+          <option
+            key={category}
+            value={category}
+            className="text-sm sm:text-base">
             {category}
           </option>
         ))}
