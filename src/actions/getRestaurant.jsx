@@ -37,9 +37,11 @@ const getRestaurant = async id => {
           },
         },
       },
-      location: { address, description, ranking },
+      location: { address, description, ranking, email, phone, website },
       hours: { openStatusText, openStatus },
     } = data;
+
+    console.log(data);
 
     return {
       name,
@@ -53,6 +55,9 @@ const getRestaurant = async id => {
       ranking,
       openStatusText,
       openStatus,
+      email,
+      phone,
+      website,
     };
   } catch (error) {
     console.error(error);
