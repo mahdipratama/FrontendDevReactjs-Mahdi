@@ -9,6 +9,7 @@ import rating3 from '../assets/icons/rating3.svg';
 import rating4 from '../assets/icons/rating4.svg';
 import rating4point5 from '../assets/icons/rating4point5.svg';
 import rating5 from '../assets/icons/rating5.svg';
+import Loading from '../components/Loading';
 
 function RestaurantDetail() {
   const { id } = useParams();
@@ -55,25 +56,13 @@ function RestaurantDetail() {
   const ratingImageSrc = getRatingImage(primaryRating);
 
   return (
-    <article className="mt-10">
-      <div className="flex items-center gap-3">
-        <h2 className="text-lg">{name} </h2>
-        <span className="w-[70px] h-[30px] inline-block">
-          <img src={ratingImageSrc} className="w-full h-full" alt="ratings" />
-        </span>
-      </div>
-
-      <div>
-        <div>
-          <div className="w-[500px] h-[520px]">
-            <img
-              src={image}
-              alt="restaurant"
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <h3>{name}</h3>
-          <div className="flex items-center gap-2">
+    <>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <article className="mt-10">
+          <div className="flex items-center gap-3">
+            <h2 className="text-lg">{name} </h2>
             <span className="w-[70px] h-[30px] inline-block">
               <img
                 src={ratingImageSrc}
@@ -81,32 +70,54 @@ function RestaurantDetail() {
                 alt="ratings"
               />
             </span>
-            <p>Ranking: {ranking}</p>
           </div>
 
           <div>
-            <p>{description}</p>
-            <span>address: {address}</span>
+            <div>
+              <div className="w-[500px] h-[520px]">
+                <img
+                  src={image}
+                  alt="restaurant"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <h3>{name}</h3>
+              <div className="flex items-center gap-2">
+                <span className="w-[70px] h-[30px] inline-block">
+                  <img
+                    src={ratingImageSrc}
+                    className="w-full h-full"
+                    alt="ratings"
+                  />
+                </span>
+                <p>Ranking: {ranking}</p>
+              </div>
 
-            <p className="ml-auto">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="30"
-                height="30"
-                viewBox="0 0 48 48"
-                fill={openStatus?.includes('CLOSED') ? 'red' : 'green'}
-                className="inline-block -mt-1 -mr-2"
-                id="bullet">
-                <path d="M24 30c-3.312 0-6-2.688-6-6s2.688-6 6-6 6 2.688 6 6-2.688 6-6 6z"></path>
-              </svg>
-              {openStatusText}
-            </p>
+              <div>
+                <p>{description}</p>
+                <span>address: {address}</span>
+
+                <p className="ml-auto">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="30"
+                    height="30"
+                    viewBox="0 0 48 48"
+                    fill={openStatus?.includes('CLOSED') ? 'red' : 'green'}
+                    className="inline-block -mt-1 -mr-2"
+                    id="bullet">
+                    <path d="M24 30c-3.312 0-6-2.688-6-6s2.688-6 6-6 6 2.688 6 6-2.688 6-6 6z"></path>
+                  </svg>
+                  {openStatusText}
+                </p>
+              </div>
+            </div>
+
+            <div>{/* TODO: map leaflet library */}</div>
           </div>
-        </div>
-
-        <div>{/* TODO: map leaflet library */}</div>
-      </div>
-    </article>
+        </article>
+      )}
+    </>
   );
 }
 

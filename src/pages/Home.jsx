@@ -10,8 +10,6 @@ function Home() {
         deleniti unde.
       </p>
 
-      {/* Filters  */}
-
       <RestaurantList />
     </main>
   );

@@ -5,6 +5,7 @@ import RestaurantCard from './RestaurantCard';
 import CurrentOpenFilter from './CurrentOpenFilter';
 import CategoryFilter from './CategoryFilter';
 import PriceFilter from './PriceFilter';
+import Loading from './Loading';
 
 function RestaurantList() {
   const { restaurants, isLoading, cagetory, price } = useGlobalContext();
@@ -41,7 +42,7 @@ function RestaurantList() {
       />
 
       {isLoading ? (
-        <p>Loading...</p>
+        <Loading />
       ) : (
         <article className="flex flex-wrap gap-5 justify-center">
           {filteredRestaurants.length === 0 ? (
