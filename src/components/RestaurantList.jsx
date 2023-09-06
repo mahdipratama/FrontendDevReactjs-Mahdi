@@ -3,7 +3,7 @@ import { useGlobalContext } from '../context/Restaurants';
 import RestaurantCard from './RestaurantCard';
 
 function RestaurantList() {
-  const { restaurants, loading } = useGlobalContext();
+  const { restaurants, isLoading } = useGlobalContext();
 
   return (
     <section>

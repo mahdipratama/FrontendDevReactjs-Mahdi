@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
+import { Link } from 'react-router-dom';
 import rating1 from '../assets/icons/rating1.svg';
 import rating2 from '../assets/icons/rating2.svg';
 import rating3 from '../assets/icons/rating3.svg';
@@ -31,8 +32,6 @@ function RestaurantCard({ restaurant }) {
 
   const ratingImageSrc = getRatingImage(rating);
 
-  console.log(currentStatus);
-
   return (
     <div>
       <div className="w-[275px] h-[250px]">
@@ -62,6 +61,12 @@ function RestaurantCard({ restaurant }) {
           {currentStatusText}
         </p>
       </div>
+
+      <Link to={`/restaurant/${restaurantsId}`}>
+        <button className="mx-auto block bg-zinc-500 text-white px-6 py-2 mt-5">
+          More detail
+        </button>
+      </Link>
     </div>
   );
 }

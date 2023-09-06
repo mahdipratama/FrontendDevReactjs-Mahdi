@@ -1,14 +1,14 @@
-const url =
-  'https://tripadvisor16.p.rapidapi.com/api/v1/restaurant/searchRestaurants?locationId=60763';
-const options = {
-  method: 'GET',
-  headers: {
-    'X-RapidAPI-Key': import.meta.env.VITE_API_KEY,
-    'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com',
-  },
-};
-
 const getRestaurants = async () => {
+  const url =
+    'https://tripadvisor16.p.rapidapi.com/api/v1/restaurant/searchRestaurants?locationId=60763';
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': import.meta.env.VITE_API_KEY,
+      'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com',
+    },
+  };
+
   try {
     const response = await fetch(url, options);
 

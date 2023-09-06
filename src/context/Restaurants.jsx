@@ -8,7 +8,7 @@ const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
   const [restaurants, setRestaurants] = useState([]);
-  const [loading, isLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchRestaurants = async () => {
@@ -17,7 +17,7 @@ const AppProvider = ({ children }) => {
 
         setRestaurants(restaurants);
 
-        isLoading(false);
+        setIsLoading(false);
       } catch (error) {
         console.error(error);
       }
@@ -29,7 +29,7 @@ const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
-        loading,
+        isLoading,
         restaurants,
       }}>
       {children}
