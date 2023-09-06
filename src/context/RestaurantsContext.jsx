@@ -26,11 +26,25 @@ const AppProvider = ({ children }) => {
     fetchRestaurants();
   }, []);
 
+  const cagetory = [
+    ...new Set(restaurants.map(restaurant => restaurant.cuisine)),
+  ];
+
+  const price = [
+    ...new Set(
+      restaurants
+        .map(restaurant => restaurant?.priceTag)
+        .filter(priceTag => priceTag !== undefined && priceTag !== null) //
+    ),
+  ];
+
   return (
     <AppContext.Provider
       value={{
         isLoading,
         restaurants,
+        cagetory,
+        price,
       }}>
       {children}
     </AppContext.Provider>

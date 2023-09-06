@@ -14,11 +14,9 @@ const getRestaurants = async () => {
 
     if (!response) throw new Error('Could not get any Restaurants');
 
-    const result = await response.json();
-
-    const { data } = result;
-
-    const { data: restaurants } = data;
+    const {
+      data: { data: restaurants },
+    } = await response.json();
 
     const dataRestaurants = restaurants.map(restaurant => {
       const {
