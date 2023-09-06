@@ -1,10 +1,9 @@
-/* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import getRestaurant from '../actions/getRestaurant';
 
 import 'leaflet/dist/leaflet.css';
-import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
+import { MapContainer, Marker, TileLayer } from 'react-leaflet';
 
 import rating1 from '../assets/icons/rating1.svg';
 import rating2 from '../assets/icons/rating2.svg';
@@ -13,6 +12,7 @@ import rating4 from '../assets/icons/rating4.svg';
 import rating4point5 from '../assets/icons/rating4point5.svg';
 import rating5 from '../assets/icons/rating5.svg';
 import Loading from '../components/Loading';
+import { Icon } from 'leaflet';
 
 function RestaurantDetail() {
   const { id } = useParams();
@@ -34,6 +34,11 @@ function RestaurantDetail() {
 
     fetchRestaurant();
   }, [id]);
+
+  const customIcon = new Icon({
+    iconUrl: 'https://cdn-icons-png.flaticon.com/512/447/447031.png',
+    iconSize: [38, 38],
+  });
 
   const getRatingImage = rating => {
     if (rating === 1) return rating1;
@@ -152,11 +157,7 @@ function RestaurantDetail() {
                   attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                   url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-                <Marker position={position}>
-                  <Popup>
-                    A pretty CSS3 popup. <br /> Easily customizable.
-                  </Popup>
-                </Marker>
+                <Marker position={position} icon={customIcon}></Marker>
               </MapContainer>
 
               <div className="shadow-small p-5">

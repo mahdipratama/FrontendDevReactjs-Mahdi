@@ -41,8 +41,6 @@ const getRestaurant = async id => {
       hours: { openStatusText, openStatus },
     } = data;
 
-    console.log(data);
-
     return {
       name,
       primaryRating,
