@@ -31,6 +31,8 @@ function RestaurantCard({ restaurant }) {
 
   const ratingImageSrc = getRatingImage(rating);
 
+  console.log(currentStatus);
+
   return (
     <div>
       <div className="w-[275px] h-[250px]">
@@ -44,9 +46,21 @@ function RestaurantCard({ restaurant }) {
       <div className="w-[70px] h-[30px]">
         <img src={ratingImageSrc} className="w-full h-full" alt="ratings" />
       </div>
-      <div className="flex gap-2">
+      <div className="flex gap-2 items-center">
         <span>{cuisine}</span> - <span>{priceTag ? `${priceTag}` : '$'}</span>
-        <p className="ml-auto">{currentStatusText}</p>
+        <p className="ml-auto">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="30"
+            viewBox="0 0 48 48"
+            fill={currentStatus.includes('CLOSED') ? 'red' : 'green'}
+            className="inline-block -mt-1 -mr-2"
+            id="bullet">
+            <path d="M24 30c-3.312 0-6-2.688-6-6s2.688-6 6-6 6 2.688 6 6-2.688 6-6 6z"></path>
+          </svg>
+          {currentStatusText}
+        </p>
       </div>
     </div>
   );
