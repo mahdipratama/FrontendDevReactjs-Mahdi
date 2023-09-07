@@ -19,7 +19,7 @@ node : v18.17.1
 - To get started with this project, run :
 
 ```bash
-https://github.com/mahdipratama/FrontendDevReactjs-Mahdi.git
+git clone https://github.com/mahdipratama/FrontendDevReactjs-Mahdi.git
 ```
 
 - Install all dependencies :
